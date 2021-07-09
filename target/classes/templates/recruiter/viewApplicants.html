@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+ <title>View Candidates</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <link rel="stylesheet" th:href="@{/css/list.css}"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="navbar">
+ 	<a class="navbar-brand" id="html" th:href="@{/recruiter/recruiterMenu(recruiterId=${recruiter.getRecruiterId()})}"> <span id="htmltxt" >Back</span></a>
+</div>
+<br></br><br><br>
+<div class="container">
+  <h3>Candidates</h3>
+	<hr>
+	<table class="table table-bordered table-striped table-primary table-hover">
+		<thead class="thead-dark">
+			<tr>
+				<th>Application no.</th>
+				<th>Jobseeker-Id</th>
+				<th>Name</th>
+				<th>Email-Id</th>
+				<th>Job</th>
+				<th>Experience</th>
+				<th>Skills</th>
+				<th>Phone</th>
+				<th>Decision</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="applicant : ${applicants}">
+				
+				<td th:text="${applicantStat.index+1}" />
+				<td th:text="${applicant.jobseekerId}" />	
+				<td th:text="${applicant.name}" />	
+				<td th:text="${applicant.email}" />	
+				<td th:text="${applicant.job}" />	
+				<td th:text="${applicant.experience}" />	
+				<td th:text="${applicant.skills}"/>	
+				<td th:text="${applicant.phone}" />	
+				
+				<td>
+					<a th:href="@{/recruiter/processSelectViewApplicants(index=${applicantStat.index})}"
+					   class="btn btn-success">
+						Select
+					</a>
+					<a th:href="@{/recruiter/processRejectViewApplicants(index=${applicantStat.index})}"
+					   class="btn btn-danger">
+						Reject
+					</a>
+				</td>
+			</tr>
+		</tbody>		
+	</table>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+

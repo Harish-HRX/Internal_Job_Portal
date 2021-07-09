@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+  <title>Jobseeker Menu</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+  body{
+  background-image: url('/images/city.jpg');
+  background-repeat: no-repeat;
+  background-size: 1518px 705px;
+  }
+ </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" th:href="@{/jobseeker/jobseekerMenu(jobseekerId=${jobseeker1.getJobseekerId()})}">Internal Job Portal</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a th:href="@{/jobseeker/showUpdateprofile(jobseekerId=${jobseeker1.getJobseekerId()})}">Profile</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Job<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a th:href="@{/jobseeker/showSearchJobs(jobseekerId=${jobseeker1.getJobseekerId()})}">Search Jobs</a></li>
+          <li><a th:href="@{/jobseeker/showAppliedJobs(jobseekerId=${jobseeker1.getJobseekerId()})}">Applied Jobs</a></li>
+        </ul>
+      </li>
+      <li><a th:href="@{/jobseeker/showStatus(jobseekerId=${jobseeker1.getJobseekerId()})}">Application Status</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a th:href="@{/home/menu}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container" >
+</div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Job Search</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <link rel="stylesheet" th:href="@{/css/list.css}"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="navbar">
+ 	<a class="navbar-brand" id="html" th:href="@{/jobseeker/jobseekerMenu(jobseekerId=${jobseeker.getJobseekerId()})}"> <span id="htmltxt" >Back</span></a>
+</div>
+<br></br><br><br>
+<div class="container" >
+  <h3>Job Search</h3>
+  <p>Type something in the input field to search the table for Location, Salary or Experience:</p>  
+  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+  <br>
+  <table class="table table-bordered table-striped table-primary table-hover">
+    <thead class="thead-dark">
+			<tr>
+				<th>Title</th>
+				<th>Salary</th>
+				<th>Skills</th>
+				<th>Experience</th>
+				<th>Location</th>
+				<th>Employment</th>
+				<th>Description</th>
+				<th>Apply</th>
+			</tr>
+		</thead>
+    <tbody id="myTable">
+     <tr th:each="job : ${jobs}">
+			
+				<td th:text="${job.title}" />	
+				<td th:text="${job.salary}" />	
+				<td th:text="${job.skillsRequired}" />	
+				<td th:text="${job.experienceRequired}" />	
+				<td th:text="${job.location}" />	
+				<td th:text="${job.employment}" />	
+				<td th:text="${job.description}" />	
+				
+				<td>
+					<a th:href="@{/jobseeker/processSearchJobs(thejobId=${job.jobId})}"
+					   class="btn btn-warning btn-sm">
+						Apply
+					</a>
+				</td>
+				
+				
+			</tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+</body>
+</html>
+

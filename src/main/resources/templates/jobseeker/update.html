@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+	<title>Profile</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<link rel="stylesheet" th:href="@{/css/profile.css}"/>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="navbar">
+ 	<a class="navbar-brand" id="html" th:href="@{/jobseeker/jobseekerMenu(jobseekerId=${jobseeker.getJobseekerId()})}"> <span id="htmltxt" >Back</span></a>
+</div>
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<div class="card-header">
+				<h3>Profile</h3>
+			</div>
+			<div class="card-body">
+				<form action="#" th:action="@{/jobseeker/processUpdateprofile}" method="post" th:object="${jobseeker}">
+					<div class="input-group form-group">
+						<input type="text" th:field="*{name}" class="form-control" placeholder="Name"/> 					
+					</div>
+					<div class="input-group form-group">
+						<input type="text" th:field="*{email}" class="form-control" placeholder="Email">	
+					</div>
+					<div class="input-group form-group">
+						<input type="text" th:field="*{password}" class="form-control" placeholder="password">
+					</div>
+					<div class="input-group form-group">
+						<input type="text" th:field="*{job}" class="form-control" placeholder="Job"/>
+					</div>
+					<div class="input-group form-group">
+						<input type="text" th:field="*{experience}" class="form-control" placeholder="Experience"/>
+					</div>
+					<div class="input-group form-group">
+						<input type="text" th:field="*{skills}" class="form-control" placeholder="Skill"/>
+					</div>
+					<div class="input-group form-group">
+						<input type="text" th:field="*{phone}" class="form-control" placeholder="Phone"/>
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Update" class="btn float-centre login_btn">
+					</div>
+					
+				</form>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<div class="errorArea">
+	<ul class="error">
+    	<li th:each="err : ${#fields.errors('jobseeker.*')}" th:text="${err}" />
+	</ul>
+</div>
+</body>
+</html>

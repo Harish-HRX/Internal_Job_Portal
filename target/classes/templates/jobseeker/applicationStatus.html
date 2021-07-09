@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Application Status</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" th:href="@{/css/list.css}"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <link rel="stylesheet" th:href="@{/css/list.css}"/>
+</head>
+<body>
+<div class="navbar">
+ 	<a class="navbar-brand" id="html" th:href="@{/jobseeker/jobseekerMenu(jobseekerId=${jobseeker.getJobseekerId()})}"> <span id="htmltxt" >Back</span></a>
+</div>
+<br></br><br><br>
+<div class="container">
+	<h3>Application Status</h3>
+	<hr>
+	<table class="table table-bordered table-striped table-primary table-hover">
+		<thead class="thead-dark">
+			<tr>
+				<th>Title</th>
+				<th>Salary</th>
+				<th>Skills</th>
+				<th>Experience</th>
+				<th>Location</th>
+				<th>Employment</th>
+				<th>Description</th>
+				<th>Status</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="job : ${jobs}">
+				<td th:text="${job.title}" />	
+				<td th:text="${job.salary}" />	
+				<td th:text="${job.skillsRequired}" />	
+				<td th:text="${job.experienceRequired}" />	
+				<td th:text="${job.location}" />	
+				<td th:text="${job.employment}" />	
+				<td th:text="${job.description}" />
+				<td class ="status" th:text="${status[jobStat.index]}">			
+			</tr>
+		</tbody>		
+	</table>
+</div>
+</body>
+</html>
